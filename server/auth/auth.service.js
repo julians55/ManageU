@@ -9,7 +9,7 @@ function isAuth(){
         if(!authHeader){
             return res.status(401).json({message: 'No token provided'});
         }
-        const token = authHeader.split('')[1];
+        const token = authHeader.slice(7);
         const payload = await verifyToken(token);
         if(!payload){
             return res.status(401).json({message: 'Invalid token'});
@@ -18,6 +18,8 @@ function isAuth(){
         if(user.rows.length === 0){
             return res.status(401);
         }
+        req.user = user.rows[0];
+        req.body.user = req.user.ID;
         next();
 
     });

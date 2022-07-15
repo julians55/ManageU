@@ -10,7 +10,7 @@ const handlerLoginUser = async (req, res) => {
     }
     const isMatch = await bcrypt.compare(password, user.rows[0].password);
     if (!isMatch) {
-        return res.status(401).json({ message: 'Invalid password' });
+        return res.status(401).json({ message: 'Inhvalid password' });
     }
     const token = signToken(user.rows[0]);
     res.send(token);
