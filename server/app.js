@@ -13,7 +13,7 @@ app.use(express.urlencoded({extended: false}));
 configExpress(app);
 routes(app);
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8081;
 
 app.get('/', (req, res) => {
     res.send('ManageU API')

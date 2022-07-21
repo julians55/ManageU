@@ -7,8 +7,14 @@ const getMoves = async (req, res) => {
 }
 
 const getMoveById = async (req, res) => {
-    const move = await pool.query('SELECT * FROM public."moves" WHERE "id" = $1', [req.params.id]);
+    const move = await pool.query('SELECT * FROM public."moves" WHERE "ID" = $1', [req.params.id]);
     res.send(move.rows);
+}
+
+const getMovesByUser = async (req, res) => {
+    const response = await pool.query('SELECT * FROM public."moves" where "user" = $1',[req.params.id]);
+    console.log(response.rows);
+    res.send(response.rows);
 }
 
 const createMove = async (req, res)=>{
@@ -38,8 +44,31 @@ const createMove = async (req, res)=>{
     
 }
 
+const editMove = async (req, res) => {
+    if(req.body.type){
+        await pool.query('UPDATE public."moves" SET "type" = $1 WHERE "ID" = $2',[req.body.type, req.params.id] );
+    }
+    if(req.body.amount){
+        await pool.query('UPDATE public."moves" SET "amount" = $1 WHERE "ID" = $2',[req.body.amount, req.params.id] );
+    }
+    if(req.body.category){
+        await pool.query('UPDATE public."moves" SET "category" = $1 WHERE "ID" = $2',[req.body.category, req.params.id] );
+    }
+    if(req.body.concept){
+        await pool.query('UPDATE public."moves" SET "concept" = $1 WHERE "ID" = $2',[req.body.concept, req.params.id] );
+    }
+    if(req.body.date){
+        await pool.query('UPDATE public."moves" SET "date" = $1 WHERE "ID" = $2',[req.body.date, req.params.id] );
+    }
+
+    const move = await pool.query('SELECT * FROM public."moves" WHERE "ID" = $1', [req.params.id]);
+    res.send(move.rows);
+}
+
 module.exports = {
     getMoves,
     getMoveById,
-    createMove
+    createMove,
+    getMovesByUser,
+    editMove
 }

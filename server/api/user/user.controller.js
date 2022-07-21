@@ -1,6 +1,5 @@
 const crypto = require('crypto');
 const pool = require('../../config/database');
-const bcrypt = require('bcrypt');
 
 const getUsers = async (req, res) => {
     const response = await pool.query('SELECT * FROM public."user"');
