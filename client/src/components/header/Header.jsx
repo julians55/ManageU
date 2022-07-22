@@ -3,31 +3,21 @@ import 'font-awesome/css/font-awesome.min.css';
 
 function Header(){
     return(
-        <><nav>
+        <nav>
             <div class="logo">
-                ManageU
+            ManageU
             </div>
             <input type="checkbox" id="click" />
-                <label for="click" class="menu-btn">
-                <i className="fa fa-bars" />
-                </label>
-                <ul>
-                    <li><a class="active" href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Gallery</a></li>
-                    <li><a href="#">Feedback</a></li>
-                </ul>
-            </nav>
-                <div class="content">
-                <div>
-                    Responsive Navigation Menu Bar Design
-                </div>
-                <div>
-                    using only HTML & CSS
-                </div>
-            </div>
-            </>
+            <label for="click" class="menu-btn">
+            <i class="fas fa-bars"></i>
+            </label>
+            <ul>
+            <li><a class="active" href="#">Home</a></li>
+            <li><a href="#">All my moves</a></li>
+            <li><a href="#">Register move</a></li>
+            <li><a href="#">Add move</a></li>
+            </ul>
+        </nav>
     )
 }
 
